@@ -1,0 +1,76 @@
+{% render 'hero' with {
+  settings: section.settings,
+  id: section.id
+} %}
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "hero"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "New Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body Copy",
+      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, a."
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "Click Here"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "small_image",
+      "label": "Small Image",
+      "info": "Image size will be 991x991px"
+    },
+    {
+      "type": "image_picker",
+      "id": "large_image",
+      "label": "Large Image"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "category": "Image with Text"
+    }
+  ]
+}
+{% endschema %}

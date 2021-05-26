@@ -1,0 +1,28 @@
+{%- assign my_collection = collections[section.settings.collection] -%}
+<section class="feature-products">
+  <h2 class="feature-products__heading">
+    {{ my_collection.title }}
+  </h2>
+  <div class="feature-products__items">
+    {% render 'product-tile' for my_collection.products as product %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Product Display",
+      "name":"Featured Products"
+    }
+  ]
+}
+{% endschema %}

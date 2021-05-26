@@ -1,0 +1,40 @@
+<section class="collection">
+  <div class="collection__image-wrapper">
+    {% if collection.image != blank %}
+      <img src="{{ collection.image | img_url: '500x' }}" alt="{{ collection.image.alt }}" class="collection__image">
+      {% else %}
+      {{ 'product-1' | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+
+  <div class="collection__wrapper">
+    <header class="collection__header">
+       <h1 class="collection__heading">{{ collection.title }} </h1>
+       <p class="collection__description">{{ collection.description }}</p>
+    </header>
+
+
+    {% paginate collection.products by 1 %}
+      {% for product in collection.products %}
+        <div class="collection__grid">
+          {% render 'product-tile' with{
+            product: product
+          } %}
+        </div>
+
+      {% endfor %}
+       <div class="collection__pagination">
+          {% for part in paginate.parts %}
+            {% if part.is_link %}
+              {{ part.title | link_to: part.url }}
+              {% else %}
+              <span> {{ part.title }} </span>
+            {% endif %}
+          {% endfor %}
+        </div>
+    {% endpaginate %}
+
+
+
+  </div>
+</section>
